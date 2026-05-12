@@ -14,6 +14,6 @@ func Initialize() error {
 }
 
 func GetLogger(prefix string) *Logger {
-	logger := NewLogger(prefix)
+	logger = NewLogger(prefix)
 	return logger
 }
