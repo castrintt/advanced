@@ -7,9 +7,12 @@ const (
 )
 
 func Initialize() {
+	// initialize the router
 	router := gin.Default()
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "Hello, World!"})
-	})
+
+	// initialize routes
+	initializeRoutes(router)
+
+	// run the server
 	router.Run(PORT)
 }
