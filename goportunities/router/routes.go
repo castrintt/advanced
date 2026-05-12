@@ -7,7 +7,6 @@ import (
 )
 
 func routes(router *gin.Engine) {
-
 	v1 := router.Group("/api/v1")
 	{
 		v1.GET(GET_OPENING, Handler.GetOpeningHandler)
@@ -16,5 +15,4 @@ func routes(router *gin.Engine) {
 		v1.PUT(UPDATE_OPENING, Handler.UpdateOpeningHandler)
 		v1.DELETE(DELETE_OPENING, Handler.DeleteOpeningHandler)
 	}
-
 }
