@@ -5,16 +5,19 @@ import (
 	"goportunities/router"
 )
 
+var (
+	logger *config.Logger
+)
+
 func main() {
 	// initialize logger
-	logger := config.NewLogger("GO-OPPORTUNITIES")
-
+	logger = config.GetLogger("GO-OPPORTUNITIES")
 
 	// initialize configs
 	err := config.Initialize()
 
 	if err != nil {
-		logger.Error(err)
+		logger.Errorf("ERROR INITIALIZING CONFIGS: %v", err)
 		return
 	}
 

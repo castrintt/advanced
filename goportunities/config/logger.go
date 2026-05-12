@@ -32,6 +32,23 @@ func (logger *Logger) Error(value ...any) {
 	logger.error.Println(value...)
 }
 
+// create Formatted logs
+
+func (logger *Logger) Debugf(format string, value ...any) {
+	logger.debug.Printf(format, value...)
+}
+
+func (logger *Logger) Infof(format string, value ...any) {
+	logger.info.Printf(format, value...)
+}
+
+func (logger *Logger) Warningf(format string, value ...any) {
+	logger.warning.Printf(format, value...)
+}
+
+func (logger *Logger) Errorf(format string, value ...any) {
+	logger.error.Printf(format, value...)
+}
 
 func NewLogger(prefix string) *Logger {
 	writer := io.Writer(os.Stdout)
