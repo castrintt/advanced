@@ -11,7 +11,7 @@ func Initialize() {
 	router := gin.Default()
 
 	// initialize routes
-	initializeRoutes(router)
+	routes(router)
 
 	// run the server
 	router.Run(PORT)
