@@ -11,8 +11,8 @@ func routes(router *gin.Engine) {
 	Handler.InitializeHandler()
 	v1 := router.Group("/api/v1")
 	{
-		v1.GET(GET_OPENING, Handler.GetOpeningHandler)
-		v1.GET(LIST_ALL_OPENING, Handler.ListAllOpeningHandler)
+		v1.GET(GET_OPENING, Handler.FindOpeningHandler)
+		v1.GET(LIST_ALL_OPENING, Handler.FindAllOpeningHandler)
 		v1.POST(CREATE_OPENING, Handler.CreateOpeningHandler)
 		v1.PUT(UPDATE_OPENING, Handler.UpdateOpeningHandler)
 		v1.DELETE(DELETE_OPENING, Handler.DeleteOpeningHandler)
