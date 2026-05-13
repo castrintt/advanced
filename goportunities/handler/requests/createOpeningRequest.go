@@ -33,6 +33,10 @@ func (request *CreateOpeningRequest) Validate() error {
 		return errorParamIsRequired("location", "string")
 	case truncateString(request.Link) == "":
 		return errorParamIsRequired("link", "string")
+	case request.Remote == nil:
+		return errorParamIsRequired("remote", "boolean")
+	case request.Salary <= 0:
+		return errorParamIsRequired("salary", "number")
 	default:
 		return nil
 	}
