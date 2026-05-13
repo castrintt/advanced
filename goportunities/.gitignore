@@ -1,0 +1,22 @@
+# Binaries
+
+
+*.exe
+*.dll
+*.so
+*.sylib
+
+
+# Test binaries
+
+*.test
+
+
+# couverage
+
+*.out
+
+
+# db folder
+
+db/

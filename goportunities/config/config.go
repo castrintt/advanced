@@ -5,12 +5,21 @@ import (
 )
 
 var (
-	DB     *gorm.DB
+	db     *gorm.DB
 	logger *Logger
 )
 
-func Initialize() error {
+func InitializeAppConfig() error {
+	var err error
+	db, err = InitializeSqlite()
+	if err != nil {
+		return err
+	}
 	return nil
+}
+
+func GetSqlite() *gorm.DB {
+	return db
 }
 
 func GetLogger(prefix string) *Logger {
