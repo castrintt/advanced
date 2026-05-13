@@ -2,7 +2,8 @@ package handler
 
 import (
 	"goportunities/config"
-	"goportunities/handler/requests"
+	Requests "goportunities/handler/request"
+	Responses "goportunities/handler/response"
 
 	"gorm.io/gorm"
 )
@@ -13,8 +14,8 @@ var (
 )
 
 func InitializeHandler() {
-	requests.InitializeRequests()
+	Requests.InitializeRequests()
+	Responses.InitializeResponse()
 	logger = config.GetLogger("HANDLER")
-	logger.Info("Initializing handler...")
 	db = config.GetSqlite()
 }

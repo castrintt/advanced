@@ -2,6 +2,7 @@ package requests
 
 import (
 	"errors"
+	"goportunities/schemas"
 	"strings"
 )
 
@@ -39,5 +40,16 @@ func (request *CreateOpeningRequest) Validate() error {
 		return errorParamIsRequired("salary", "number")
 	default:
 		return nil
+	}
+}
+
+func (request *CreateOpeningRequest) ToEntity() *schemas.Opening {
+	return &schemas.Opening{
+		Role:     request.Role,
+		Company:  request.Company,
+		Location: request.Location,
+		Remote:   *request.Remote,
+		Link:     request.Link,
+		Salary:   request.Salary,
 	}
 }
