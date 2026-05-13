@@ -1,13 +1,13 @@
 package handler
 
 import (
-	"net/http"
+	Requests "goportunities/handler/requests"
 
 	"github.com/gin-gonic/gin"
 )
 
-func CreateOpeningHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"message": "hello workd!",
-	})
+func CreateOpeningHandler(context *gin.Context) {
+	request := Requests.CreateOpeningRequest{}
+	context.BindJSON(&request)
+	logger.Infof("Request: %+v", request)
 }
