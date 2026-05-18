@@ -1,17 +1,20 @@
 package handler
 
 import (
-	Requests "goportunities/handler/request"
+	"goportunities/handler/defaultMessages"
+	requests "goportunities/handler/request"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func CreateOpeningHandler(context *gin.Context) {
-	request := Requests.CreateOpeningRequest{}
+	request := requests.CreateOpeningRequest{}
 
 	context.BindJSON(&request)
 
 	if err := request.Validate(); err != nil {
+		defaultMessages.SendError(context, http.StatusBadRequest, err.Error())
 		return
 	}
 
@@ -19,6 +22,9 @@ func CreateOpeningHandler(context *gin.Context) {
 
 	if err := db.Create(&entity).Error; err != nil {
 		logger.Errorf("ERROR CREATING OPENING: %v", err)
+		defaultMessages.SendError(context, http.StatusBadRequest, err.Error())
 		return
 	}
+
+	defaultMessages.SendSuccess(context, "Opening created successfully", true)
 }

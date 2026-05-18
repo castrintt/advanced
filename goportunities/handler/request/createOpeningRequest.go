@@ -11,8 +11,8 @@ func errorParamIsRequired(name, typeParam string) error {
 	return errors.New(name + " is required")
 }
 
-func truncateString(str string) string {
-	return strings.TrimSpace(str)
+func truncateString(text string) string {
+	return strings.TrimSpace(text)
 }
 
 type CreateOpeningRequest struct {
@@ -37,6 +37,10 @@ func (request *CreateOpeningRequest) Validate() error {
 	case request.Remote == nil:
 		return errorParamIsRequired("remote", "boolean")
 	case request.Salary <= 0:
+		if request.Salary == 0 {
+			logger.Errorf("the %s parameter is cannot be zero", "salary")
+			return errors.New("salary cannot be zero")
+		}
 		return errorParamIsRequired("salary", "number")
 	default:
 		return nil
