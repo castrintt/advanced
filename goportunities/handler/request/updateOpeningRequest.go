@@ -6,7 +6,7 @@ import (
 	"goportunities/schemas"
 )
 
-type CreateOpeningRequest struct {
+type UpdateOpeningRequest struct {
 	Role     string `json:"role"`
 	Company  string `json:"company"`
 	Location string `json:"location"`
@@ -15,7 +15,7 @@ type CreateOpeningRequest struct {
 	Salary   int64  `json:"salary"`
 }
 
-func (request *CreateOpeningRequest) Validate() error {
+func (request *UpdateOpeningRequest) Validate() error {
 	switch {
 	case errorHandler.TruncateString(request.Role) == "":
 		return errorHandler.ErrorParamIsRequired("role", "string")
@@ -38,7 +38,7 @@ func (request *CreateOpeningRequest) Validate() error {
 	}
 }
 
-func (request *CreateOpeningRequest) ToEntity() *schemas.Opening {
+func (request *UpdateOpeningRequest) ToEntity() *schemas.Opening {
 	return &schemas.Opening{
 		Role:     request.Role,
 		Company:  request.Company,
