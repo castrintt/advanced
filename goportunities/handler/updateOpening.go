@@ -11,13 +11,13 @@ import (
 )
 
 func UpdateOpeningHandler(c *gin.Context) {
-	paramId := c.Param("id")
-	if paramId == "" {
+	queryId := c.Query("id")
+	if queryId == "" {
 		defaultMessages.SendError(c, http.StatusBadRequest, "ID is required")
 		return
 	}
 
-	id64, err := strconv.ParseUint(paramId, 10, 64)
+	id64, err := strconv.ParseUint(queryId, 10, 64)
 	if err != nil {
 		defaultMessages.SendError(c, http.StatusBadRequest, "Invalid ID")
 		return
